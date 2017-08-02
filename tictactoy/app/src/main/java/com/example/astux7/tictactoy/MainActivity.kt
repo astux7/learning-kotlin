@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             buSelected.setBackgroundColor(Color.GREEN)
             player1.add(cellID)
             activePlayer=2
+            AutoPlay()
         }else{
             buSelected.text="O"
             buSelected.setBackgroundColor(Color.BLUE)
@@ -104,5 +106,34 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"Winner: Player"+winner,Toast.LENGTH_LONG).show()
         }
         if(player1.count()+player2.count()==9 && winner == -1) Toast.makeText(this, "Nobody won" ,Toast.LENGTH_LONG).show()
+    }
+
+    fun AutoPlay(){
+        var emptyCell = ArrayList<Int>()
+        for(cellID in 1..9) {
+            if(!(player1.contains(cellID) || player2.contains(cellID))){
+                emptyCell.add(cellID)
+            }
+        }
+
+        val r = Random()
+        val randIndex = r.nextInt(emptyCell.size-0)+0
+        val cellId = emptyCell[randIndex]
+
+        var buSelected:Button?
+        when(cellId){
+            1-> buSelected = bu1
+            2-> buSelected = bu2
+            3-> buSelected = bu3
+            4-> buSelected = bu4
+            5-> buSelected = bu5
+            6-> buSelected = bu6
+            7-> buSelected = bu7
+            8-> buSelected = bu8
+            9-> buSelected = bu9
+            else-> buSelected = bu1
+        }
+
+        PlayGame(cellId,buSelected)
     }
 }
