@@ -57,4 +57,8 @@ class MainActivity : AppCompatActivity() {
         }
         editShowText.setText(buClickValue)
     }
+
+    fun buOpEvent(view: View){
+        
+    }
 }
