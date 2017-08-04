@@ -18,7 +18,7 @@
         android:background="@color/grey"
         android:ems="10"
         android:gravity="right"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:paddingTop="10pt"
         android:text="0"
         android:textColor="@color/white"
@@ -108,7 +108,7 @@
                 android:textColor="@color/black" />
 
             <Button
-                android:id="@+id/button11"
+                android:id="@+id/buMul"
                 android:layout_width="30pt"
                 android:layout_height="30pt"
                 android:layout_weight="1"
@@ -242,7 +242,7 @@
             android:layout_height="30pt"
             android:layout_weight="1"
             android:background="@color/orange"
-            android:onClick="buOpEvent"
+            android:onClick="buEqlEvent"
             android:text="="
             android:textColor="@color/white" />
     </LinearLayout>

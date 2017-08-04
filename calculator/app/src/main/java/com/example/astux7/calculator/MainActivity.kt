@@ -12,9 +12,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-
+    var op = "*"
+    var oldNumber = ""
+    var isNewOp = true
     fun buNumberEvent(view:View){
-
+        if(isNewOp){
+            editShowText.setText("")
+        }
+        isNewOp = false
         val buSelected = view as Button
         var buClickValue:String = editShowText.text.toString()
         when(buSelected.id){
@@ -56,9 +61,48 @@ class MainActivity : AppCompatActivity() {
             }
         }
         editShowText.setText(buClickValue)
+        isNewOp=true
     }
 
     fun buOpEvent(view: View){
-        
+        val buSelected = view as Button
+        when(buSelected.id) {
+            buMul.id-> {
+               op = "*"
+            }
+            buDiv.id-> {
+                op = "/"
+            }
+            buAdd.id-> {
+                op = "+"
+            }
+            buSub.id-> {
+                op = "-"
+            }
+        }
+        oldNumber = editShowText.text.toString()
+        isNewOp=true
+    }
+
+    fun buEqlEvent(view: View){
+
+        var newNumber = editShowText.text.toString().toDouble()
+        var finalNumber:Double?=null
+        when(op){
+            "*"->{
+                finalNumber = oldNumber.toDouble()*newNumber
+            }
+            "/"->{
+                finalNumber = oldNumber.toDouble()/newNumber
+            }
+            "+"->{
+                finalNumber = oldNumber.toDouble()+newNumber
+            }
+            "-"->{
+                finalNumber = oldNumber.toDouble()-newNumber
+            }
+        }
+        editShowText.setText(finalNumber.toString())
+        isNewOp=true
     }
 }
