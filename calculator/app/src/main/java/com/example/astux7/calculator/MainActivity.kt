@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         editShowText.setText(buClickValue)
-        isNewOp=true
     }
 
     fun buOpEvent(view: View){
@@ -103,6 +102,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
         editShowText.setText(finalNumber.toString())
+        isNewOp = true
+    }
+
+    fun buPercent(view:View){
+        val number:Double = editShowText.text.toString().toDouble()/100
+        editShowText.setText(number.toString())
+        isNewOp=true
+    }
+
+    fun buClean(view:View){
+        editShowText.setText("0")
         isNewOp=true
     }
 }
